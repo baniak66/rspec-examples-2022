@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit destroy ]
 
-  # GET /posts or /posts.json
+  # GET /posts
   def index
     @posts = Post.all
   end
 
-  # GET /posts/1 or /posts/1.json
+  # GET /posts/1
   def show
   end
 
@@ -19,10 +19,9 @@ class PostsController < ApplicationController
   def edit
   end
 
-  # POST /posts or /posts.json
+  # POST /posts or
   def create
-    @post = ::Posts::Create.new(post_params).call
-
+    @post = ::Posts::Create.new(title: post_params[:title], content: post_params[:content]).call
     if @post.valid?
       redirect_to post_url(@post), notice: "Post was successfully created."
     else
