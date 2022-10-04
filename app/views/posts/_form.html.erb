@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.hidden_field :image, value: post.cached_image_data, id: nil %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

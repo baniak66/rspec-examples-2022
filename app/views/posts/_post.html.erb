@@ -9,4 +9,8 @@
     <%= post.content %>
   </p>
 
+  <%if post.image%>
+    <%= image_tag post.image_url %>
+  <%end%>
+
 </div>
