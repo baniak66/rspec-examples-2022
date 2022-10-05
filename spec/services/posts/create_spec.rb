@@ -4,10 +4,18 @@ RSpec.describe Posts::Create do
   let(:params) do
     {
       title: title,
-      content: "content"
+      content: "content",
+      image: file,
+    }
+  end
+  let(:expected_attributes) do
+    {
+      title: title,
+      content: "content",
     }
   end
   let(:title) { "title" }
+  let(:file) { fixture_file_upload("img1.jpeg", "image/jpeg") }
   let(:instance) { described_class.new(params) }
 
   subject { instance.call }
@@ -26,7 +34,12 @@ RSpec.describe Posts::Create do
     end
 
     it "returns post object with proper attributes" do
-      expect(subject).to have_attributes(params)
+      expect(subject).to have_attributes(expected_attributes)
+    end
+
+    it "returns post object with proper attributes" do
+      subject
+      expect(Post.last.image.metadata["filename"]).to eq("img1.jpeg")
     end
 
     it "returns object without errors" do

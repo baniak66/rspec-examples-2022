@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "shrine", "~> 3.4.0"
+gem "shrine-cloudinary", "~> 1.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -55,6 +56,7 @@ group :development, :test do
   gem "rspec-rails", "~> 5.1.2"
   gem 'factory_bot_rails', "~> 6.2.0"
   gem "rails-controller-testing"
+  gem "dotenv-rails", "~> 2.8.1"
 end
 
 group :test do
